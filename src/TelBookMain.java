@@ -1,30 +1,33 @@
-import com.sun.source.tree.WhileLoopTree;
 import db.DBConn;
+import exception.MyException;
+import service.TelBookService;
 import view.UserView;
 
 import java.sql.Connection;
 import java.util.Scanner;
 
 public class TelBookMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyException {
+        Connection connection = DBConn.getConnection();
+
         Scanner sc = new Scanner(System.in);
-      //  Connection connection = DBConn.getConnection();
-        
+        TelBookService service = new TelBookService();
+        TelBookService service1 = new TelBookService();
+;
+        // UserView 인스턴스를 생성
+        UserView userView = new UserView(sc, service);
 
-
-        //유져뷰 인스턴스 생성
-        UserView userView = new UserView(sc);
         int input;
         while (true) {
             do {
-                System.out.println("1.입력 2. 수정 3. 삭제 4. 전체출력 5. ID검색 6.종료 ");
-                System.out.println(" ▶메뉴입력 : ");
+                System.out.println("1.입력 2.수정 3.삭제 4.전체출력 5.ID검색 6.종료");
+                System.out.println("▶ 메뉴 입력 : ");
                 input = sc.nextInt();
-            } while (input < 1 || input > 6);
-            switch (input){
+            } while (input <1 || input > 6);
+            switch (input) {
                 case 1:
                     userView.insert();
-                break;
+                    break;
                 case 2:
                     userView.update();
                     break;
@@ -39,7 +42,6 @@ public class TelBookMain {
                     break;
                 case 6:
                     System.out.println("종료합니다.");
-
             }
         }
     }

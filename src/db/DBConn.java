@@ -38,18 +38,16 @@ public class DBConn {
 
     //DB 종료 시 처리
     public static void close() {
-        if (dbConn ! = null) {
+        if (dbConn != null) {
             try {
                 if (! dbConn.isClosed()) {
                     dbConn.close();
-
                 }
-                catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                dbConn = null;
 
+            }catch (Exception e) {
+                System.out.println(e.getMessage());
             }
+            dbConn = null;
         }
     }
 }
