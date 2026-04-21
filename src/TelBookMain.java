@@ -1,11 +1,16 @@
 import com.sun.source.tree.WhileLoopTree;
+import db.DBConn;
 import view.UserView;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class TelBookMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+      //  Connection connection = DBConn.getConnection();
+        
+
 
         //유져뷰 인스턴스 생성
         UserView userView = new UserView(sc);
